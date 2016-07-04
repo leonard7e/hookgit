@@ -6,7 +6,7 @@ import (
   "net/http"
 )
 /*
-"github.com/leonard7e/hookgit/appError"
+"github.com/leonard7e/hookgit/error"
 */
 type JsonMap map[string]interface{}
 
@@ -18,7 +18,7 @@ func ReadJson(r *http.Request) (*JsonMap) {
   jm := new (JsonMap)
   json.Unmarshal(s, jm)
   // err := json.Unmarshal(s, jm)
-  // appError.AssertNoErr(err)
+  // error.AssertNoErr(err)
 
   return jm
 }

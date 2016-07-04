@@ -13,7 +13,7 @@ func CreateHandler(args *flags.PrgArg) (func(w http.ResponseWriter, r *http.Requ
     fmt.Println("HTTP-Request came from host", r.Host)
     if (r.Method == "POST") {
       fmt.Println("Post method received")
-      callbacks.RunCallbacks(args, json.ReadJson(r))
+      callbacks.RunCallbacks(& args.GitH, json.ReadJson(r))
     } else {
       fmt.Println("Method:", r.Method)
     }
