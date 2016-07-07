@@ -30,6 +30,5 @@ func RunCallbacks (gitH *githost.GitHost, jM *json.JsonMap) {
 // site Effect. Needs Error. Will do later.
 func RegisterCallback (cb string) {
   var cbs = strings.Split(cb,".")
-  fmt.Println("Registering Callbacks.", cbs)
   cbList[cbs[0]] = append(cbList[cbs[0]], cbs[1])
 }

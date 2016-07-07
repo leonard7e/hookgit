@@ -47,7 +47,7 @@ func ParseArgs() *PrgArg {
   if ( flag.NArg() == 1 ) {
     pArgs.Repository = flag.Arg(0)
     register_callbacks(fa_cb)
-    chose_git_host(&pArgs, f_host)
+    githost.ChoseGithost(&pArgs.GitH, f_host)
     return &pArgs
   } else {
     flag.Usage()

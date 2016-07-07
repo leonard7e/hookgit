@@ -5,7 +5,7 @@ import (
 )
 
 
-func Host_Gitlab(h *GitHost) {
+func HostGitlab(h *GitHost) {
   h.HostName = "Gitlab"
   h.ObjectKind = func (data *json.JsonMap) (string) {
     str, ok := (*data)["object_kind"].(string)
