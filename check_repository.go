@@ -16,7 +16,8 @@ func check_git_repository(pArg *flags.PrgArg) {
 
   var re_url = regexp.MustCompile("url = .*\n")
   var re_ssh = regexp.MustCompile("git@.*")
-  var re_host = regexp.MustCompile("(github)|(gitlab)")
+  var re_host = regexp.MustCompile("(gitlab)")
+  // var re_host = regexp.MustCompile("(gitlab)|(github)") 
 
   var url = re_url.Find(f)
 
@@ -24,6 +25,7 @@ func check_git_repository(pArg *flags.PrgArg) {
     fmt.Println("Ok. This repository uses Ssh for Push/Pull.")
     // Chose Githost service (Gitlab / ... )
     var hostStr = string(re_host.Find(url))
+    fmt.Println("Using ", hostStr)
     githost.ChoseGithost(&pArg.GitH, &hostStr)
   } else {
     panic("Please use SSH based clones.")
