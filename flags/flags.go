@@ -9,12 +9,11 @@ import (
 
 type PrgArg struct {
   GitH githost.GitHost
-  Repository string
   Callbacks map[string]string
 }
 
 var (
-  f_host = flag.String("host", "gitlab", "Chose Git Host. One of these: (gitlab).")
+  // f_host = flag.String("host", "gitlab", "Chose Git Host. One of these: (gitlab).")
   fa_cb FlagArray
 )
 
@@ -24,7 +23,7 @@ var (
 
 func init_flags() {
   flag.Usage = func() {
-    fmt.Println("Usage: hookgit [Flags] Repository")
+    fmt.Println("Usage: hookgit [Flags]")
     fmt.Println("Flags are")
     flag.PrintDefaults()
   }
@@ -44,14 +43,12 @@ func ParseArgs() *PrgArg {
   flag.Parse()
 
   // Now we can use Options received from Flags
-  if ( flag.NArg() == 1 ) {
-    pArgs.Repository = flag.Arg(0)
-    register_callbacks(fa_cb)
-    githost.ChoseGithost(&pArgs.GitH, f_host)
-    return &pArgs
-  } else {
+  if ( flag.NArg() >= 1 ) {
     flag.Usage()
     return nil
     // TODO: Return Error
+  } else {
+    register_callbacks(fa_cb)
+    return &pArgs
   }
 }
